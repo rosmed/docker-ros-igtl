@@ -4,8 +4,12 @@ RUN apt-get update
 RUN rm -rf /var/lib/apt/list/*
 
 # Install ROS-Industrial + universal robot
-RUN apt-get install -y --no-install-recommends ros-kinetic-industrial-core \
-    && apt-get install -y --no-install-recommends ros-kinetic-universal-robot
+RUN rosdep update \
+    && apt-get update -y \
+    && apt-get dist-upgrade -y \
+    && apt-get install -y --no-install-recommends ros-kinetic-industrial-core \
+    && apt-get install -y --no-install-recommends ros-kinetic-universal-robot \
+    && apt-get install -y --no-install-recommends ros-kinetic-moveit
 
 # Install OpenIGTLink under /root/igtl
 RUN mkdir igtl \
