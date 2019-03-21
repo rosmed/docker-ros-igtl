@@ -1,6 +1,8 @@
 FROM ct2034/vnc-ros-kinetic-full
 
-RUN apt-get update
+# General
+RUN apt-get update -y\
+    && apt-get install -y --no-install-recommends wget
 RUN rm -rf /var/lib/apt/list/*
 
 # Install ROS-Industrial + universal robot
