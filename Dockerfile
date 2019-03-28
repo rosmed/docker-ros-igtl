@@ -12,7 +12,7 @@ RUN rosdep update \
     && apt-get install -y --no-install-recommends ros-kinetic-industrial-core \
     && apt-get install -y --no-install-recommends ros-kinetic-universal-robot \
     && apt-get install -y --no-install-recommends ros-kinetic-moveit \
-    && apt-get install -y --no-install-recommands ros-kinetic-moveit-visual-tools
+    && apt-get install -y --no-install-recommends ros-kinetic-moveit-visual-tools
     
 # Install OpenIGTLink under /root/igtl
 RUN mkdir igtl \
@@ -31,6 +31,7 @@ RUN mkdir -p /root/catkin_ws/src \
     && git clone https://github.com/openigtlink/ROS-IGTL-Bridge \
     && git clone https://github.com/rosmed/ismr19_description \
     && git clone https://github.com/rosmed/ismr19_moveit \
+    && git clone https://github.com/rosmed/ismr19_control \
     && cd /root/catkin_ws \
     && /bin/bash -c "source /opt/ros/kinetic/setup.bash; catkin_make --cmake-args -DOpenIGTLink_DIR:PATH=/root/igtl/OpenIGTLink-build"
 
