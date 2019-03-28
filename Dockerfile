@@ -28,8 +28,14 @@ RUN mkdir -p /root/catkin_ws/src \
     && /bin/bash -c "source /opt/ros/kinetic/setup.bash; catkin_make" \
     && cd /root/catkin_ws/src \
     && git clone https://github.com/openigtlink/ROS-IGTL-Bridge \
+    && git clone https://github.com/rosmed/ismr19_description \
+    && git clone https://github.com/rosmed/ismr19_moveit \
+    && git clone https://github.com/tokjun/ros_bx_robot_bridge \
     && cd /root/catkin_ws \
     && /bin/bash -c "source /opt/ros/kinetic/setup.bash; catkin_make --cmake-args -DOpenIGTLink_DIR:PATH=/root/igtl/OpenIGTLink-build"
 
-    
+# Downlaod data for tutorial
+RUN mkdir /root/models \
+    && cd /root/models \
+    && wget -O ismr19.scene https://bit.ly/2OpSdKM
 
